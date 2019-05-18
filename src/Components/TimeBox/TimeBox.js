@@ -1,29 +1,35 @@
-import React from 'react';
-import { Button, Counter } from '../../Components';
+import React, { Component } from 'react';
+import { Button, Timer, Stopwatch } from '../../Components';
 
-export const TimeBox = () => {
-  return (
-    <div className="timeBox-container">
-      <div id="top-part">
-        <Button className="timer-btn">
-          Timer
+export class TimeBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: "stopwatch"
+    }
+  }
+  render() {
+    const { type } = this.state;
+    return (
+      <div className="timeBox-container">
+        <div id="top-part">
+          <Button className="timer-btn" onClick={() => this.setState({ type: "timer" })}>
+            Timer
         </Button>
-        <Button className="stopwatch-btn">
-          Stopwatch
+          <Button className="stopwatch-btn" onClick={() => this.setState({ type: "stopwatch" })}>
+            Stopwatch
         </Button>
+        </div>
+        <div id="bottom-part">
+          {
+            type === "timer"
+              ?
+              <Timer className="counter" />
+              :
+              <Stopwatch className="counter" />
+          }
+        </div>
       </div>
-      <div id="bottom-part">
-        <Counter className="counter" />
-        <Button className="start-pause-btn">
-          Start
-        </Button>
-        <Button className="stop-btn">
-          Stop
-        </Button>
-        <Button className="reset-btn">
-          Reset
-        </Button>
-      </div>
-    </div>
-  )
+    )
+  }
 }

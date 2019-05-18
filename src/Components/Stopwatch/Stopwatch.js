@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from '../../Components';
-export class Counter extends Component {
+
+export class Stopwatch extends Component {
   constructor(props) {
     super(props);
     this.count = 0;
@@ -47,28 +48,21 @@ export class Counter extends Component {
     });
   }
   render() {
-    const { className, type } = this.props;
+    const { className } = this.props;
     const { paused, h, m, s } = this.state;
-    console.log(type);
     return (
       <>
         <div className={className}>
           <ul>
             <li>
-              <i class="fas fa-sort-up" />
               {h < 10 ? "0" + h : h}
-              <i class="fas fa-sort-down" />
             </li>
 
             <li>
-              <i class="fas fa-sort-up" />
               {m < 10 ? "0" + m : m}
-              <i class="fas fa-sort-down" />
             </li>
             <li>
-              <i class="fas fa-sort-up" />
               {s < 10 ? "0" + s : s}
-              <i class="fas fa-sort-down" />
             </li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from '../../Components';
-export class Counter extends Component {
+export class Timer extends Component {
   constructor(props) {
     super(props);
     this.count = 0;
