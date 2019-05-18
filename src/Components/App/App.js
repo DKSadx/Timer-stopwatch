@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import { TimeBox } from '../../Components';
+import { Counter } from '../../Components';
 
 function App() {
   return (
     <div className="App">
-      <TimeBox />
+      <Counter />
     </div>
   );
 }

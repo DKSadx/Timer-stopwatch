@@ -1,88 +1,33 @@
 import React, { Component } from 'react';
-import { Button } from '../../Components';
+import { Button, Timer, Stopwatch } from '../../Components';
+
 export class Counter extends Component {
   constructor(props) {
     super(props);
-    this.count = 0;
     this.state = {
-      paused: false,
-      h: 0,
-      m: 0,
-      s: 0
+      type: "stopwatch"
     }
-  }
-
-  startCounting() {
-    if (!this.state.paused) {
-      this.setState({ paused: true })
-      this.count = setInterval(() => {
-        if (this.state.m - 59 === 0 && this.state.s - 59 === 0) {
-          this.setState({
-            h: this.state.h + 1,
-            m: 0,
-            s: 0
-          })
-        }
-        else if (this.state.s - 59 === 0) {
-          this.setState({
-            m: this.state.m + 1,
-            s: 0
-          })
-        } else {
-          this.setState({ s: this.state.s + 1 });
-        }
-      }, 1000);
-    } else {
-      this.setState({ paused: false })
-      clearInterval(this.count);
-    }
-  }
-  reset() {
-    clearInterval(this.count);
-    this.setState({
-      paused: false,
-      h: 0,
-      m: 0,
-      s: 0
-    });
   }
   render() {
-    const { className, type } = this.props;
-    const { paused, h, m, s } = this.state;
-    console.log(type);
+    const { type } = this.state;
     return (
-      <>
-        <div className={className}>
-          <ul>
-            <li>
-              <i class="fas fa-sort-up" />
-              {h < 10 ? "0" + h : h}
-              <i class="fas fa-sort-down" />
-            </li>
-
-            <li>
-              <i class="fas fa-sort-up" />
-              {m < 10 ? "0" + m : m}
-              <i class="fas fa-sort-down" />
-            </li>
-            <li>
-              <i class="fas fa-sort-up" />
-              {s < 10 ? "0" + s : s}
-              <i class="fas fa-sort-down" />
-            </li>
-          </ul>
+      <div className="timeBox-container">
+        <div id="top-part">
+          <Button className="timer-btn" onClick={() => this.setState({ type: "timer" })}>
+            Timer
+        </Button>
+          <Button className="stopwatch-btn" onClick={() => this.setState({ type: "stopwatch" })}>
+            Stopwatch
+        </Button>
         </div>
-        <Button className="start-pause-btn" onClick={() => this.startCounting()}>
-          {!paused ? "Start" : "Pause"}
-        </Button>
-        <Button className="stop-btn">
-          Pholder
-        </Button>
-        <Button className="reset-btn" onClick={() => this.reset()}>
-          Reset
-        </Button>
-
-      </>
-    );
+        <div id="bottom-part">
+          {
+            type === "timer"
+              ? <Timer className="timer" />
+              : <Stopwatch className="stopwatch" />
+          }
+        </div>
+      </div>
+    )
   }
 }

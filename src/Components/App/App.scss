@@ -48,7 +48,23 @@ body {
         position: relative;
         height: 50%;
         background-color: red;
-        .counter {
+        .timer {
+          position: absolute;
+          background-color: green;
+          @include counter-position();
+          ul {
+            display: flex;
+            li {
+              flex: 33.3%;
+              text-align: center;
+              // display: inline;
+              list-style: none;
+              height: 20px;
+              line-height: 20px;
+            }
+          }
+        }
+        .stopwatch {
           position: absolute;
           background-color: green;
           @include counter-position();

@@ -16,20 +16,20 @@ export class Timer extends Component {
     if (!this.state.paused) {
       this.setState({ paused: true })
       this.count = setInterval(() => {
-        if (this.state.m - 59 === 0 && this.state.s - 59 === 0) {
+        if (this.state.m === 0 && this.state.s === 0) {
           this.setState({
-            h: this.state.h + 1,
-            m: 0,
+            h: this.state.h - 1,
+            m: 59,
             s: 0
           })
         }
-        else if (this.state.s - 59 === 0) {
+        else if (this.state.s === 0) {
           this.setState({
-            m: this.state.m + 1,
-            s: 0
+            m: this.state.m - 1,
+            s: 59
           })
         } else {
-          this.setState({ s: this.state.s + 1 });
+          this.setState({ s: this.state.s - 1 });
         }
       }, 1000);
     } else {
@@ -46,29 +46,41 @@ export class Timer extends Component {
       s: 0
     });
   }
+
+  changeNumber(timeType, arrow) {
+    if (arrow === "down") {
+      this.state[timeType] === 0
+        ? this.setState({ [timeType]: 59 })
+        : this.setState({ [timeType]: this.state[timeType] - 1 })
+    } else {
+      this.state[timeType] === 59
+        ? this.setState({ [timeType]: 0 })
+        : this.setState({ [timeType]: this.state[timeType] + 1 })
+    }
+
+  }
   render() {
-    const { className, type } = this.props;
+    const { className } = this.props;
     const { paused, h, m, s } = this.state;
-    console.log(type);
     return (
       <>
         <div className={className}>
           <ul>
             <li>
-              <i class="fas fa-sort-up" />
+              <i onClick={() => this.changeNumber("h", "up")} className="fas fa-sort-up" />
               {h < 10 ? "0" + h : h}
-              <i class="fas fa-sort-down" />
+              <i onClick={() => this.changeNumber("h", "down")} className="fas fa-sort-down" />
             </li>
 
             <li>
-              <i class="fas fa-sort-up" />
+              <i onClick={() => this.changeNumber("m", "up")} className="fas fa-sort-up" />
               {m < 10 ? "0" + m : m}
-              <i class="fas fa-sort-down" />
+              <i onClick={() => this.changeNumber("m", "down")} className="fas fa-sort-down" />
             </li>
             <li>
-              <i class="fas fa-sort-up" />
+              <i onClick={() => this.changeNumber("s", "up")} className="fas fa-sort-up" />
               {s < 10 ? "0" + s : s}
-              <i class="fas fa-sort-down" />
+              <i onClick={() => this.changeNumber("s", "down")} className="fas fa-sort-down" />
             </li>
           </ul>
         </div>
