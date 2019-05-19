@@ -72,13 +72,13 @@ export class Timer extends Component {
           <ul>
             <li>
               <i onClick={() => this.changeNumber("h", "up")} className="fas fa-sort-up" />
-              {h < 10 ? "0" + h : h}
+              {h < 10 ? "0" + h + ":" : h + ":"}
               <i onClick={() => this.changeNumber("h", "down")} className="fas fa-sort-down" />
             </li>
 
             <li>
               <i onClick={() => this.changeNumber("m", "up")} className="fas fa-sort-up" />
-              {m < 10 ? "0" + m : m}
+              {m < 10 ? "0" + m + ":" : m + ":"}
               <i onClick={() => this.changeNumber("m", "down")} className="fas fa-sort-down" />
             </li>
             <li>
