@@ -66,16 +66,21 @@ export class Stopwatch extends Component {
             </li>
           </ul>
         </div>
-        <Button className="start-pause-btn" onClick={() => this.startCounting()}>
+        <Button
+          className="start-pause-btn"
+          onClick={() => this.startCounting()}
+        >
           {!paused ? "Start" : "Pause"}
         </Button>
         <Button className="stop-btn">
           Pholder
         </Button>
-        <Button className="reset-btn" onClick={() => this.reset()}>
+        <Button
+          className="reset-btn"
+          onClick={() => this.reset()}
+        >
           Reset
         </Button>
-
       </>
     );
   }

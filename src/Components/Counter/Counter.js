@@ -19,26 +19,32 @@ export class Counter extends Component {
     return (
       <div className="counter">
         <div id="top-part">
-          <Button className={timerClass} onClick={
-            () => {
-              this.setState({
-                type: "timer",
-                stopwatchClass: "stopwatch-btn",
-                timerClass: "timer-btn-pressed"
-              })
+          <Button
+            className={timerClass}
+            onClick={
+              () => {
+                this.setState({
+                  type: "timer",
+                  stopwatchClass: "stopwatch-btn",
+                  timerClass: "timer-btn-pressed"
+                })
+              }
             }
-          }>
+          >
             Timer
           </Button>
-          <Button className={stopwatchClass} onClick={
-            () => {
-              this.setState({
-                type: "stopwatch",
-                stopwatchClass: "stopwatch-btn-pressed",
-                timerClass: "timer-btn"
-              })
+          <Button
+            className={stopwatchClass}
+            onClick={
+              () => {
+                this.setState({
+                  type: "stopwatch",
+                  stopwatchClass: "stopwatch-btn-pressed",
+                  timerClass: "timer-btn"
+                })
+              }
             }
-          }>
+          >
             Stopwatch
           </Button>
         </div>
