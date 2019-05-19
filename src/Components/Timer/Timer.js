@@ -16,11 +16,15 @@ export class Timer extends Component {
     if (!this.state.paused) {
       this.setState({ paused: true })
       this.count = setInterval(() => {
-        if (this.state.m === 0 && this.state.s === 0) {
+        if (this.state.h === 0 && this.state.m === 0 && this.state.s === 0) {
+          this.setState({ paused: false })
+          clearInterval(this.count);
+        }
+        else if (this.state.m === 0 && this.state.s === 0) {
           this.setState({
             h: this.state.h - 1,
             m: 59,
-            s: 0
+            s: 59
           })
         }
         else if (this.state.s === 0) {
@@ -46,7 +50,7 @@ export class Timer extends Component {
       s: 0
     });
   }
-
+  // logic for up/down arrows
   changeNumber(timeType, arrow) {
     if (arrow === "down") {
       this.state[timeType] === 0
