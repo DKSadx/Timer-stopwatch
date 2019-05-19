@@ -7,7 +7,9 @@ export const Button = (props) => {
       className={className}
       onClick={onClick}
     >
-      {children}
+      <p>
+        {children}
+      </p>
     </button>
   );
 }

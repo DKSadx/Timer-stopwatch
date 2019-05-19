@@ -55,11 +55,11 @@ export class Stopwatch extends Component {
         <div className={className}>
           <ul>
             <li>
-              {h < 10 ? "0" + h : h}
+              {h < 10 ? "0" + h + ":" : h + ":"}
             </li>
 
             <li>
-              {m < 10 ? "0" + m : m}
+              {m < 10 ? "0" + m + ":" : m + ":"}
             </li>
             <li>
               {s < 10 ? "0" + s : s}
