@@ -8,6 +8,46 @@ $border-color: #002A2C;
   left: 20%;
   right: 20%;
 }
+@mixin top-btns {
+  position: relative;
+  box-shadow: 0 6px #021C1D;
+  width: 25vw;
+  height: 15vh;
+  text-align: center;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  font-size: 4vmin;
+}
+@mixin counter-box {
+  position: absolute;
+  background-color: black;
+  font-size: 15vmin;
+  border-style: solid;
+  border-width: 5px;
+  border-color: $border-color;
+  width: 100%;
+  height: 30vh;
+  line-height: 30vh;
+}
+@mixin counter-numbers {
+  position: relative;
+  display: inline-block;
+  color: white;
+  list-style: none;
+  user-select: none;
+}
+@mixin bottom-btns {
+  position: absolute;
+  font-size: 2vmax;
+  color: white;
+  background-color: $btn-colors;
+  box-shadow: 0 6px #021C1D;
+  top: 40vh;
+  width: 20vw;
+  height: 7vh;
+  border-radius: 40px;
+}
 
 body {
   * {
@@ -28,17 +68,9 @@ body {
         grid-template-columns: 50% 50%;
         height: 50%;
         .timer-btn {
-          position: relative;
+          @include top-btns();
           background-color: $btn-colors;
-          box-shadow: 0 6px #021C1D;
-          width: 25vw;
-          height: 15vh;
-          text-align: center;
-          border-style: solid;
-          border-color: white;
-          border-width: 1px;
           top: 40%;
-          font-size: 4vmin;
             p {
               color: white;
             }
@@ -50,20 +82,11 @@ body {
           outline: 0;
         }
         .timer-btn-pressed {
-          position: relative;
+          @include top-btns();
           background-color: $btn-pressed;
-          box-shadow: 0 6px #021C1D;
-          width: 25vw;
-          height: 15vh;
-          text-align: center;
-          border-style: solid;
-          border-color: white;
-          border-width: 1px;
           top: 45%;
-          font-size: 4vmin;
             p {
               color: white;
-              display:block;
             }
         }
         .timer-btn-pressed:hover {
@@ -76,19 +99,10 @@ body {
           outline: 0;
         }
         .stopwatch-btn {
-          position: relative;
-          background-color: $btn-colors;
-          box-shadow: 0 6px #021C1D;
-          width: 25vw;
-          height: 15vh;
-          text-align: center;
-          border-style: solid;
-          border-color: white;
-          border-width: 1px;
+          @include top-btns();
           top: 40%;
+          background-color: $btn-colors;
           right: -6vw;
-          font-size: 4vmin;
-          word-break: break-all;
             p {
               color: white;
               display:block;
@@ -102,22 +116,13 @@ body {
           outline: 0;
         }
         .stopwatch-btn-pressed {
-          position: relative;
-          background-color: $btn-pressed;
-          box-shadow: 0 6px #021C1D;
-          width: 25vw;
-          height: 15vh;
-          text-align: center;
-          border-style: solid;
-          border-color: white;
-          border-width: 1px;
+          @include top-btns();
           top: 45%;
           right: -6vw;
-          font-size: 4vmin;
+          background-color: $btn-pressed;
           word-break: break-all;
             p {
               color: white;
-              display:block;
               width:100%;
            }
         }
@@ -136,23 +141,11 @@ body {
         height: 10rem;
         border-radius: 2%;
         .timer {
-          position: absolute;
-          background-color: black;
-          font-size: 15vmin;
-          border-style: solid;
-          border-width: 5px;
-          border-color: $border-color;
-          width: 100%;
-          height: 30vh;
-          line-height: 30vh;
+          @include counter-box();
           ul {
             text-align: center;
             li {
-              position: relative;
-              display: inline-block;
-              color: white;
-              list-style: none;
-              user-select: none;
+              @include counter-numbers();
               .fa-sort-up {
                 position: absolute;
                 top: 10%;
@@ -171,36 +164,17 @@ body {
           }
         }
         .stopwatch {
-          position: absolute;
-          background-color: black;
-          font-size: 15vmin;
-          border-style: solid;
-          border-width: 5px;
-          border-color: $border-color;
-          width: 100%;
-          height: 30vh;
-          line-height: 30vh;
+          @include counter-box();
           ul {
             text-align: center;
             li {
-              position: relative;
-              display: inline-block;
-              color: white;
-              list-style: none;
+              @include counter-numbers();
             }
           }
         }
         .start-pause-btn {
-          position: absolute;
-          font-size: 2vmax;
-          color: white;
-          background-color: $btn-colors;
-          box-shadow: 0 6px #021C1D;
-          top: 40vh;
+          @include bottom-btns();
           left: 0vw;
-          width: 20vw;
-          height: 7vh;
-          border-radius: 40px;
         }
         .start-pause-btn:focus {
           outline: 0;
@@ -211,16 +185,8 @@ body {
           transform: translateY(10px);
         }
         .reset-btn {
-          position: absolute;
-          font-size: 2vmax;
-          color: white;
-          background-color: $btn-colors;
-          box-shadow: 0 6px #021C1D;
-          top: 40vh;
+          @include bottom-btns();
           right: 0vw;
-          width: 20vw;
-          height: 7vh;
-          border-radius: 40px;
         }
         .reset-btn:active {
           background-color: $btn-colors;
