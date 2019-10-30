@@ -1,8 +1,8 @@
 ## <u>Timer and stopwatch</u>
 
-Timer and stopwatch made with ReactJS.
+Timer and stopwatch is an accurate app for measuring time. It has a simple and easy to use design with the option to pause and continue counting later. App is made with HTML5, CSS3(SCSS) and React.
 
-**Live page:** <a  href="https://hardcore-leavitt-824cfb.netlify.com/">here</a>
+**Live page:** <a  href="https://projects.darkokojovic.com/counter/">here</a>
 
 #### <u>Video</u>:
 
